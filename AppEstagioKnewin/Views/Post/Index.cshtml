@@ -1,0 +1,45 @@
+﻿@model X.PagedList.PagedList<PostPresentationModel>
+
+@{
+    ViewData["Title"] = "Posts";
+    
+}
+
+<div id="IndexTop" class="text-center">
+<h1>Users Posts! See what our users are saying.</h1>
+<a>To have a post with your name on the page, please create an user.</a>
+<br />
+    <a asp-controller="Usuario" asp-action="Create" id="IndexCreateBtn" class="btn btn-outline-dark">Create New User</a>
+</div>
+
+
+<div class="container text-center" id="ContainerIndex" >
+    
+     @foreach (var item in Model){
+         <div id="ContainerPosts" class="text-start">
+             <a id="PostLink" asp-controller="Post" asp-action="GetUser" asp-route-Author="@item.Author" class="list-group-item">@item.Author</a> 
+             <a  asp-action="Details" asp-route-id="@item.Id" class="list-group-item">@item.Title</a>
+             <textarea class="form-control" rows="3" readonly="readonly">
+              @Html.DisplayFor(modelItem => item.Content)
+              </textarea>
+              <span class="btn-outline-primary btn-sm" id="BtnDeletePost">@item.PublishDate</span>
+              <a asp-action="Delete" asp-route-id="@item.Id" id="BtnDeletePost" class="btn-outline-danger btn-sm">Delete Post</a>  
+         </div>
+     }
+
+     <div class="row">
+         <div class="col-md-8">
+            @Html.PagedListPager(Model, pagina => Url.Action("Index","Post", new {pagina}))
+         </div>
+     </div>
+      @*  <form asp-action="Index">
+             
+            <input type="hidden" name="indexpage" value="Next" />
+            <input type="submit" value="Next Page" class="btn btn-outline-dark"/>
+        </form>
+        <form asp-action="Index">
+            <input type="hidden" name="indexpage" value="Previous" />
+            <input type="submit" value="Previous Page" class="btn btn-outline-dark"/>
+        </form>
+   *@
+   </div>

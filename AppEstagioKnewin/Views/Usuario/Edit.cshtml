@@ -1,0 +1,39 @@
+﻿@model UsuarioPresentationModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div id="IndexTop" class="text-center">
+<h1>Check out this person!</h1>
+<a>Might change his name to something funny...</a>
+</div>
+<div class="container text-center" >
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input id="TextInput" asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmailAddress" class="control-label"></label>
+                <input id="TextInput" asp-for="EmailAddress" class="form-control" />
+                <span asp-validation-for="EmailAddress" class="text-danger"></span>
+            </div>
+            <div class="BtnContainer mb-3 mt-3">
+                <input type="submit" value="Save" class="btn btn-outline-dark" />
+            </div>
+        </form>
+         <div class="BtnContainer">
+                <a asp-action="Index" class="btn btn-outline-primary">All Users</a>
+         </div>
+    
+    
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

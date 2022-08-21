@@ -1,0 +1,27 @@
+﻿@model PostPresentationModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div id="IndexTop" class="text-center">
+<h1>Take a closer look at the post!</h1>
+<a>You might want to create a new one, so just click ehre to do so.</a>
+<br />
+    <a asp-controller="Post" asp-action="Create" id="IndexCreateBtn" class="btn btn-outline-dark">Create New Post</a>
+</div>
+
+ <div id="ContainerIndex" class="container">
+             <div id="ContainerPosts" class="text-start">
+             <a id="PostLink" asp-controller="Usuario" asp-action="Details" asp-route-id="@Model.Id" class="list-group-item">@Model.Author</a> 
+             <a  asp-action="Details" asp-route-id="@Model.Id" class="list-group-item">@Model.Title</a>
+             <textarea class="form-control" rows="3" readonly="readonly">
+              @Model.Content
+              </textarea>
+              <span class="btn-outline-primary btn-sm" id="BtnDeletePost">@Model.PublishDate</span>
+         </div>
+ </div>
+<div class="BtnContainer">
+    <a class="btn btn-outline-dark text-decoration-none" asp-action="Edit" asp-route-id="@Model.Id">Edit</a> 
+    <a class="btn btn-outline-primary text-decoration-none" asp-action="Index">Go to Posts Page</a>
+</div>

@@ -1,0 +1,38 @@
+﻿@model UsuarioPresentationModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div id="IndexTop" class="text-center">
+<h1>Delete an user...</h1>
+<a>Sure you want to delete the user?</a>
+</div>
+<div>
+<div id="ContainerIndex" class="container">
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.EmailAddress)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.EmailAddress)
+        </dd>
+       
+    </dl>
+
+</div>
+    <div class="BtnContainer">    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Delete" class="btn btn-outline-danger" /> 
+        <a class=" btn btn-outline-primary" asp-action="Index">Go to All Users Page</a>
+    </form>
+    </div>
+    
+</div>

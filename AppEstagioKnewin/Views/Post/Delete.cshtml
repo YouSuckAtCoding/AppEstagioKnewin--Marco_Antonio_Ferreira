@@ -1,0 +1,29 @@
+﻿@model PostPresentationModel
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<div id="IndexTop" class="text-center">
+<h1>Delete a post...</h1>
+<a>Sure you want to delete the post?</a>
+</div>
+<div>
+ <div id="ContainerIndex" class="container">
+             <div id="ContainerPosts" class="text-start">
+             <a id="PostLink" asp-controller="Usuario" asp-action="Details" asp-route-id="@Model.Id" class="list-group-item">@Model.Author</a> 
+             <a  asp-action="Details" asp-route-id="@Model.Id" class="list-group-item">@Model.Title</a>
+             <textarea class="form-control" rows="3" readonly="readonly">
+              @Model.Content
+              </textarea>
+              <a class="btn-outline-primary btn-sm" id="BtnDeletePost">@Model.PublishDate</a>
+         </div>
+ </div>
+    <div class="BtnContainer">
+        <form asp-action="Delete">
+            <input type="hidden" asp-for="Id" />
+            <input type="submit" value="Delete" class="btn btn-outline-danger" /> 
+            <a class="btn btn-outline-primary" asp-action="Index">Go to All Posts Page</a>
+        </form>
+    </div>
+</div>
